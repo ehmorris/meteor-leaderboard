@@ -1,0 +1,83 @@
+@import 'bourbon/bourbon';
+
+@mixin mobile-only {
+  @media screen and (max-width: 568px) {
+    @content;
+  }
+}
+
+body {
+  font-family: $helvetica;
+  margin: 0;
+  padding: 0;
+  @include user-select(none);
+}
+
+#outer {
+  @include box-sizing(border-box);
+  margin: 4em auto;
+  max-width: 980px;
+  padding: 0 4em;
+  width: 100%;
+
+  @include mobile-only {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.leaderboard {
+  .player {
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+    display: table;
+    font-size: 2em;
+    width: 100%;
+
+    @include mobile-only {
+      font-size: 1.5em;
+    }
+
+    span {
+      display: table-cell;
+      line-height: 1em;
+      padding: .7em .4em;
+      @include transition;
+    }
+
+    .score {
+      color: #777;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .inc {
+      background: #666;
+      @include box-shadow(inset -2px -2px 8px rgba(0, 0, 0, .6));
+      color: #fff;
+      display: none;
+      width: 2em;
+
+      &:hover {
+        background: #888;
+      }
+
+      &:active {
+        @include box-shadow(inset 2px 2px 8px rgba(0, 0, 0, .6));
+        color: #ddd;
+      }
+    }
+  }
+
+  .player.selected {
+    background-color: yellow;
+
+    .score {
+      color: black;
+    }
+
+    .inc {
+      display: table-cell;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<head>
+  <title>Leaderboard</title>
+  <meta content="initial-scale=1.0, maximum-scale=1.0" name="viewport">
+  <script type="application/javascript" src="/client/fastclick.js"></script>
+  <script type="application/javascript" src="/client/other.js"></script>
+</head>
+
+<body>
+  <div id="outer">
+    {{> leaderboard}}
+  </div>
+</body>
+
+<template name="player">
+  <div class="player {{selected}}">
+    <span class="name">{{name}}</span>
+    <span class="score">{{score}}</span>
+    <span class="inc">+5</span>
+  </div>
+</template>
+
+<template name="leaderboard">
+  <div class="leaderboard">
+    {{#each players}}
+      {{> player}}
+    {{/each}}
+  </div>
+</template>
